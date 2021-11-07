@@ -15,6 +15,7 @@
     "start": "NODE_ENV=development react-scripts start",
     "build": "NODE_ENV=production react-scripts build",
     "test": "NODE_ENV=test react-scripts test",
+    "server": "NODE_ENV=development json-server -w -p 3001 ./data/db.json",
     "lint": "eslint ."
   },
   "eslintConfig": {
