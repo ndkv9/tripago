@@ -1,9 +1,11 @@
 import './App.css'
+import TripList from './components/TripList'
+import axios from 'axios'
 
 function App() {
   return (
     <div className='App'>
-      <h2>hello world</h2>
+      <TripList />
     </div>
   )
 }
