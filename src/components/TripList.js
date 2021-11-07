@@ -1,3 +1,5 @@
+import './TripList.css'
+
 const TripList = ({ trips }) => {
   return (
     <div className='trip-list'>
