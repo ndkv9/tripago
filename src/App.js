@@ -1,27 +1,18 @@
 import './App.css'
 import TripList from './components/TripList'
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useFetch } from './hooks/helper.hook'
 
 function App() {
-  const [trips, setTrips] = useState([])
-  const [url, setUrl] = useState('http://localhost:3001/trips')
+  const baseUrl = 'http://localhost:3001/trips'
 
-  const fetchData = async baseUrl => {
-    const { data } = await axios.get(baseUrl)
-    setTrips(data)
-  }
-
-  useEffect(() => {
-    fetchData(url)
-  }, [url])
+  const [trips, setUrl] = useFetch(baseUrl)
 
   const filterEurope = () => {
-    setUrl('http://localhost:3001/trips?loc=europe')
+    setUrl(`${baseUrl}?loc=europe`)
   }
 
   const filterAll = () => {
-    setUrl('http://localhost:3001/trips')
+    setUrl(baseUrl)
   }
 
   return (

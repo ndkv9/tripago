@@ -4,11 +4,7 @@ const TripList = ({ trips, filterEurope, filterAll }) => {
   return (
     <div className='trip-list'>
       <h2>Trip List</h2>
-      <ul>
-        {trips.map(trip => (
-          <Trip key={trip.id} trip={trip} />
-        ))}
-      </ul>
+      <ul>{trips && trips.map(trip => <Trip key={trip.id} trip={trip} />)}</ul>
       <div className='filters'>
         <button onClick={filterEurope}>European Trips</button>
         <button onClick={filterAll}>All Trips</button>
