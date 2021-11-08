@@ -9,10 +9,12 @@ export const useFetch = baseUrl => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
+    const controller = new AbortController()
+
     setIsPending(true)
     const fetchData = async () => {
       try {
-        const res = await axios.get(url)
+        const res = await axios.get(url, { signal: controller.signal })
         setIsPending(false)
         setData(res.data)
         setError(null)
@@ -23,6 +25,10 @@ export const useFetch = baseUrl => {
       }
     }
     fetchData()
+
+    return () => {
+      controller.abort()
+    }
   }, [url])
 
   return { data, setUrl, isPending, error }

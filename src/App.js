@@ -20,7 +20,9 @@ function App() {
 
   return (
     <div className='App'>
-      <button onClick={() => setShowTrips(false)}>hide trips</button>
+      <button onClick={() => setShowTrips(!showTrips)}>
+        {showTrips ? 'hide trips' : 'show trips'}
+      </button>
       {showTrips && <h2>Trip List</h2>}
       {isPending && <div>Loading trips...</div>}
       {error && <div>{error}</div>}
