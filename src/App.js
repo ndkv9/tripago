@@ -7,8 +7,13 @@ function App() {
   const [trips, setTrips] = useState([])
   const [url, setUrl] = useState('http://localhost:3001/trips')
 
+  const fetchData = async baseUrl => {
+    const { data } = await axios.get(baseUrl)
+    setTrips(data)
+  }
+
   useEffect(() => {
-    axios.get(url).then(({ data }) => setTrips(data))
+    fetchData(url)
   }, [url])
 
   const filterEurope = () => {
