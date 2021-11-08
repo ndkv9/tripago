@@ -5,7 +5,7 @@ import { useFetch } from './hooks/helper.hook'
 function App() {
   const baseUrl = 'http://localhost:3001/trips'
 
-  const [trips, setUrl] = useFetch(baseUrl)
+  const { data: trips, setUrl, isPending } = useFetch(baseUrl)
 
   const filterEurope = () => {
     setUrl(`${baseUrl}?loc=europe`)
@@ -17,6 +17,8 @@ function App() {
 
   return (
     <div className='App'>
+      <h2>Trip List</h2>
+      {isPending && <div>Loading trips...</div>}
       <TripList
         trips={trips}
         filterEurope={filterEurope}
